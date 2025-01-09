@@ -10,6 +10,6 @@ export default {
       Top:{'22':'22%'},
     },
   },
-  plugins: [require ("@tailwindcss/forms")],
+  plugins: [],
 }
 
