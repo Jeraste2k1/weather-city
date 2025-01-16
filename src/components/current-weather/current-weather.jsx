@@ -1,56 +1,53 @@
 import React from "react";
 
-const CurrentWeather = ({ data }) => {
+const CurrentWeather = ({ weather }) => {
   return (
-    <div className="weather w-72 rounded-lg shadow-lg text-white bg-gray-800 mx-auto my-5 p-5">
-      {/* Section Top */}
-      <div className="top flex justify-between items-center">
-        <div>
-          <p className="city font-semibold text-lg leading-none tracking-wide m-0">{data.city}</p>
-          <p className="weather-description font-normal text-sm leading-none m-0">
-            {data.weather[0].description}
-          </p>
+    <div className="flex flex-col items-center mt-16">
+      <img
+        src={`icons/${weather.weather[0].icon}.png`}
+        alt="weather icon"
+        className="w-20 h-20 mb-4"
+      />
+      <p className="text-5xl font-bold text-white">
+        {Math.round(weather.main.temp)}°C
+      </p>
+      <p className="text-lg text-white mt-2">{weather.city}</p>
+      <div className="flex justify-between w-full mt-6 text-sm text-white">
+        <div className="flex flex-col items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-6 h-6 mb-1"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M20.84 15.33A4.58 4.58 0 0118 14.7M4 12h16M3.27 7.27a4.6 4.6 0 017.47-3.52M3.46 16.46A4.6 4.6 0 0012 18a4.6 4.6 0 008.54-1.54M7 20h10"
+            />
+          </svg>
+          <p>Humidité</p>
+          <p>{weather.main.humidity}%</p>
         </div>
-        <img
-          alt="weather"
-          className="weather-icon w-24"
-          src={`icons/${data.weather[0].icon}.png`}
-        />
-      </div>
-
-      {/* Section Bottom */}
-      <div className="bottom">
-        <p className="temperature font-semibold text-6xl tracking-tighter my-3">
-          {Math.round(data.main.temp)}°C
-        </p>
-        <div className="details w-full pl-5">
-          <div className="parameter-row flex justify-between">
-            <span className="parameter-label font-normal text-xs text-left">Détails météo</span>
-          </div>
-          <div className="parameter-row flex justify-between">
-            <span className="parameter-label font-normal text-xs text-left">Température ressentie</span>
-            <span className="parameter-value font-semibold text-xs text-right">
-              {Math.round(data.main.feels_like)}°C
-            </span>
-          </div>
-          <div className="parameter-row flex justify-between">
-            <span className="parameter-label font-normal text-xs text-left">Vitesse du vent</span>
-            <span className="parameter-value font-semibold text-xs text-right">
-              {data.wind.speed} m/s
-            </span>
-          </div>
-          <div className="parameter-row flex justify-between">
-            <span className="parameter-label font-normal text-xs text-left">Taux d'humidité</span>
-            <span className="parameter-value font-semibold text-xs text-right">
-              {data.main.humidity}%
-            </span>
-          </div>
-          <div className="parameter-row flex justify-between">
-            <span className="parameter-label font-normal text-xs text-left">Pression atmosphérique</span>
-            <span className="parameter-value font-semibold text-xs text-right">
-              {data.main.pressure} hPa
-            </span>
-          </div>
+        <div className="flex flex-col items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-6 h-6 mb-1"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4.929 4.929l14.142 14.142M19.071 4.929L4.929 19.071M3 12h18"
+            />
+          </svg>
+          <p>Vitesse du vent</p>
+          <p>{weather.wind.speed} km/h</p>
         </div>
       </div>
     </div>
